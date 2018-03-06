@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/style.css">
+    <title>OpenTable Clone</title>
+  </head>
+  <body>
+    <div id='menu'></div>
+    <script src="/Lib/react.development.js"></script>
+    <script src="/Lib/react-dom.development.js"></script>
+    <script src="http://localhost:3001/bundle.js"></script>
+    <!-- see: https://reactjs.org/docs/react-without-jsx.html -->
+    <script>
+      ReactDOM.render(
+        React.createElement(MenuApp, {restaurant: "2"}),
+        document.getElementById('menu')
+      );
+    </script>
+  </body>
+</html>
