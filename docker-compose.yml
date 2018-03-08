@@ -1,0 +1,38 @@
+version: "2"
+services:
+  mongo:
+    container_name: mongo
+    image: mongo:3.6.2
+    volumes:
+      - /data/db
+    ports:
+      - "27017:27017"
+  menus:
+    container_name: menus
+    restart: always
+    build: /home/jqywang/Documents/HackReactor/menus
+    ports:
+      - "8000"
+    links:
+      - mongo
+    command: npm start
+
+  reviews:
+    container_name: reviews
+    restart: always
+    build: /home/jqywang/Documents/HackReactor/reviews
+    ports:
+      - "8001"
+    links:
+      - mongo
+    command: npm start
+
+  proxy:
+    container_name: proxy
+    restart: always
+    build: /home/jqywang/Documents/HackReactor/proxy-jeff
+    ports:
+      - "80:80"
+    links:
+      - menus
+      - reviews

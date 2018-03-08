@@ -6,16 +6,31 @@
     <title>OpenTable Clone</title>
   </head>
   <body>
+    <div id='review'></div>
     <div id='menu'></div>
+    <div id='photos'></div>
     <script src="/Lib/react.development.js"></script>
     <script src="/Lib/react-dom.development.js"></script>
-    <script src="http://localhost:3001/bundle.js"></script>
+    <script src="menus/bundle.js"></script>
+    <script src="reviews/bundle.js"></script>
+
+    <!-- <script src="http://localhost:8000/bundle.js"></script>
+    <script src="http://localhost:3002/bundle.js"></script> -->
+    
     <!-- see: https://reactjs.org/docs/react-without-jsx.html -->
     <script>
       ReactDOM.render(
         React.createElement(MenuApp, {restaurant: "2"}),
         document.getElementById('menu')
       );
+      ReactDOM.render(
+        React.createElement(ReviewApp, {restaurantID: "1"}),
+        document.getElementById('review')
+      );
+      // ReactDOM.render(
+      //   React.createElement(PhotoModule),
+      //   document.getElementById('photos')
+      // );
     </script>
   </body>
 </html>
