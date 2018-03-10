@@ -2,17 +2,27 @@ version: "2"
 services:
   mongo:
     container_name: mongo
-    image: mongo:3.6.2
-    volumes:
-      - /data/db
+    image: jqywang/opentable-menu:database1
+    # volumes:
+    #   - /data/db
     ports:
       - "27017:27017"
   menus:
     container_name: menus
     restart: always
-    build: /home/jqywang/Documents/HackReactor/menus
+    image: jqywang/opentable-menu:menu1
+    #build: /home/jqywang/Documents/HackReactor/menus 
     ports:
       - "8000"
+    links:
+      - mongo
+    command: npm start
+  photos:
+    container_name: photos
+    restart: always
+    image: leesuehee/opentable_photos:photo1
+    ports:
+      - "8002"
     links:
       - mongo
     command: npm start
@@ -20,7 +30,8 @@ services:
   reviews:
     container_name: reviews
     restart: always
-    build: /home/jqywang/Documents/HackReactor/reviews
+    #build: /home/jqywang/Documents/HackReactor/reviews
+    image: dpaikoff/hrsf89_fec:reviews1
     ports:
       - "8001"
     links:
